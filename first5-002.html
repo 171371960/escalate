@@ -15,7 +15,17 @@
 </head>
 
 <body>
-
+    <h3>透明度常用的方式</h3>
+    <hr>
+    （用color属性会让字体完全透明，所以只能使用background-color属性）<br>
+    ①透明色
+    <div style="background-color: transparent">透明背景色 </div>
+    ②透明度
+    <div style="opacity: .6 ; color: #2077C8;">透明度（范围 0-1）</div>
+    ③rgba
+    <div style=" color: rgba(32, 119, 200, .5)">透明度 a是透明度（范围0.0到1.0之间，0.5为半透明）</div>
+    设置在color属性上是改变内容 的透明度 上面两个效果是一样的 <br>
+    背景色透明一般使用 background-color:rgba(32, 119, 200, .5) 其他方式有兼容浏览器的毛病
 </body>
 <script>
 
