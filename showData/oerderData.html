@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>简历丫</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dataTop {
+        width: scale(100% -80px);
+        height: 100%;
+        /* padding: 2rem; */
+        border: 1px solid rgb(187, 175, 175);
+        margin: auto 40px;
+    }
+
+    .dataOne {
+        height: 29px;
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+
+    .data1 {
+        font-size: 22pt;
+        color: #6aa84f;
+        background-color: transparent;
+        font-weight: bold;
+        font-style: normal;
+        text-decoration: none;
+        line-height: 1;
+        float: left;
+    }
+
+    .data2 {
+        font-size: 11pt;
+        color: #000000;
+        background-color: transparent;
+        font-weight: bold;
+        font-style: normal;
+        text-decoration: none;
+        vertical-align: bottom;
+        margin-top: 8px;
+        float: right;
+    }
+
+    .dataTow {
+        width: 100%;
+        display: flex;
+        align-content: flex-start;
+        justify-content: space-between;
+    }
+
+    .dataTow span {
+        font-size: 10.5pt;
+        color: #000000;
+        background-color: transparent;
+        font-weight: bold;
+        font-style: normal;
+        text-decoration: none;
+        line-height: 1;
+        vertical-align: baseline;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .data3 {
+        width: auto;
+        height: 15px;
+        background-color: transparent;
+    }
+
+    .dataStyle {
+        width: 100%;
+        height: 57px;
+        border-bottom: 1px solid black;
+    }
+
+    .dataStyle2 {
+        width: 128px;
+        padding: 18px;
+        /* padding: 0.38rem; */
+        font-size: 12pt;
+        color: #ffffff;
+        background-color: #111;
+        font-weight: bold;
+        font-style: normal;
+        text-decoration: none;
+        /* display: inline-block; */
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="./js/index.js"></script>
+
+<body>
+    <div class="dataTop">
+        <div class="dataOne">
+            <div class="data1">乔小堂</div>
+            <div class="data2">求职意向：Web前端开发</div>
+        </div>
+        <div class="dataTow">
+            <span> (+86) 138-0138-0000</span>
+            <span> service@qiaobutang.com</span>
+            <span> 微信：qiaobujianli</span>
+        </div>
+        <div class="data3"></div>
+        <div class="dataStyle">
+            <div class="dataStyle2">专业技能</div>
+        </div>
+    </div>
+</body>
+<script>
+    dashboardFlexible.init(16 / 9);
+
+    // function funcUrlDel(name) {
+    //   var loca = window.location;
+    //   var baseUrl = loca.origin + loca.pathname + "?";
+    //   var query = loca.search.substr(1);
+    //   if (query.indexOf(name) > -1) {
+    //     var obj = {};
+    //     var arr = query.split("&");
+    //     for (var i = 0; i < arr.length; i++) {
+    //       arr[i] = arr[i].split("=");
+    //       obj[arr[i][0]] = arr[i][1];
+    //     }
+    //     delete obj[name];
+    //     var url =
+    //       baseUrl +
+    //       JSON.stringify(obj)
+    //         .replace(/[\" \{\}]/g, "")
+    //         .replace(/\:/g, "=")
+    //         .replace(/\,/g, "&");
+    //     return url;
+    //   }
+    // }
+
+    // console.log(funcUrlDel("id"));
+
+    // var url = "file:///D:/historykeep/study/showData/oerderData.html?id=13&from=dddddss4&dd=3";
+    // var UrlParams = url.split("?")[1].split("&");
+    // var getIt = null;
+    // var param = "from";
+
+    // UrlParams.map(item => {
+    //   if (item.indexOf(param) > -1) {
+    //     return (getIt = item.split("=")[1]);
+    //   }
+    // });
+
+    // console.log(getIt);
+</script>
+<script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+<script>
+    // 初始化
+    var vConsole = new VConsole();
+
+    var ms = new Map()
+    ms.set('a1', 'ddddd')
+    ms.set('a2', 'ssssss')
+    // console.log(ms.get('a1'));
+    for (const item of ms) {
+        console.log(item);
+
+    }
+</script>
+
+</html>

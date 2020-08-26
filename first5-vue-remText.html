@@ -1,0 +1,110 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>自适应</title>
+   <script src="./data/vue2.6.js"></script>
+   <style>
+     * {
+       padding: 0;
+       margin: 0;
+     }
+
+     /* 
+     html {
+       font-size: 26.67vw;
+     } */
+     .div_top {
+       width: 10%;
+       height: 60px;
+       text-align: center;
+       margin: 0 auto;
+     }
+
+     .div_top span {
+       float: right;
+       font-weight: 400;
+       height: 60px;
+       font-size: 30px;
+       margin-top: -12px;
+     }
+   </style>
+ </head>
+
+ <body>
+   <div id="app">
+     <!-- <div v-for="item in list" class="div_top">{{item}}</div> -->
+     <div v-for="(item,index) in list_data" class="div_top add">{{item.price+"元/kg"+"// 数量"+item.num}}
+       <span @click="showData(index)">+</span>
+       <span> &nbsp&nbsp&nbsp</span>
+       <span @click="showData_subtracted(index)">-</span>
+     </div>
+     <div class="div_top">{{"总价："+ all_price+"元"}}</div>
+   </div>
+
+   <script type="text/javascript">
+     new Vue({
+       el: "#app",
+       data() {
+         return {
+           numB: 1,
+           list: [12, 2, 2, 2],
+           list_data: [{
+             price: 10,
+             num: 0,
+             name: "苹果"
+           }, {
+             price: 13,
+             num: 0,
+             name: "栗子"
+           }, {
+             price: 6,
+             num: 0,
+             name: "香蕉"
+           }, {
+             price: 5,
+             num: 0,
+             name: "甘蔗"
+           }],
+
+         }
+       },
+       computed: {
+         all_price() {
+           var getPrice = 0;
+           this.list_data.forEach(item => {
+             getPrice += item.price * item.num
+           })
+           return getPrice;
+         }
+       },
+       created() {
+         //  this.getDta()
+       },
+       methods: {
+         getDta() {
+
+         },
+         showData(getIndex) {
+           this.list_data[getIndex].num++
+           //  this.list_data.map((item, index, arr) => { //第二种方式
+           //    if (index == getIndex) {
+           //      arr[getIndex].num++
+           //    }
+           //  })
+         },
+         showData_subtracted(getIndex) {
+           if (this.list_data[getIndex].num == 0) {
+             return false
+           }
+           this.list_data[getIndex].num--
+         }
+       },
+     })
+   </script>
+ </body>
+
+ </html>

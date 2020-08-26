@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>微油坐标定位</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    #container {
+      height: 400px;
+      width: 600px;
+    }
+
+    .amap-icon img {
+      width: 25px;
+      height: 34px;
+    }
+
+    .amap-marker-label {
+      border: 0;
+      background-color: transparent;
+    }
+
+    .info {
+      position: relative;
+      top: 0;
+      right: 0;
+      min-width: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=dc0c717439264041a3164f14a03da1e0">
+  </script>
+  <script type="text/javascript">
+    var map = new AMap.Map('container', {
+      resizeEnable: true,
+      center: [116.440153, 40.041392],
+      zoom: 13
+    });
+
+    var marker = new AMap.Marker({
+      position: map.getCenter(),
+      icon: './img/bg03.jpg',
+      offset: new AMap.Pixel(0, 0)
+    });
+
+    marker.setMap(map);
+
+    // 设置鼠标划过点标记显示的文字提示
+    marker.setTitle('我是marker的title');
+
+    // 设置label标签
+    // label默认蓝框白底左上角显示，样式className为：amap-marker-label
+    marker.setLabel({
+      offset: new AMap.Pixel(10, 5), //设置文本标注偏移量
+
+      // https://www.amap.com/search?id=B0FFI8DGV4&city=110105&geoobj=116.401948|40.035403|116.447267|40.05321&query_type=IDQ&query=北京微油科技服务有限公司&zoom=15
+      content: "<div class='info' >北京微油科技服务有限公司</div>", //设置文本标注内容
+      direction: 'right' //设置文本标注方位
+    });
+    marker.on('click', () => {
+      window.open(
+        'https://www.amap.com/search?id=B0FFI8DGV4&city=110105&geoobj=116.401948|40.035403|116.447267|40.05321&query_type=IDQ&query=北京微油科技服务有限公司&zoom=15'
+      )
+    });
+  </script>
+</body>
+
+</html>

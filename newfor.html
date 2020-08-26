@@ -1,0 +1,515 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>自适应</title>
+      <script src="./data/vue2.6.js"></script>
+      <link rel="stylesheet" href="./img/index.sass">
+      <style>
+          * {
+              padding: 0;
+              margin: 0;
+          }
+
+
+          .div_main {
+              width: 100%;
+              color: #fff;
+          }
+
+          .div_top {
+              max-width: 1180px;
+              margin: 0 auto;
+          }
+
+
+          .div_top_main {
+              /* background-image: linear-gradient(to right, rgb(62, 147, 231), rgb(22, 127, 231)); */
+              background-image: linear-gradient(to right, rgba(92, 131, 169, 0.63), rgba(129, 170, 211, 0.74));
+              position: fixed;
+          }
+
+          .div_top_item {
+              width: 14%;
+              height: 64px;
+              text-align: center;
+              display: inline-block;
+              vertical-align: middle;
+              cursor: pointer;
+          }
+
+          .div_top_item:first-of-type {
+              background: center url("./img/componet4.png") no-repeat;
+              background-size: cover;
+              height: 60px;
+          }
+
+          .div_top_item:after {
+              content: '';
+              display: inline-block;
+              height: 100%;
+              vertical-align: middle;
+              font-size: 1.1em;
+          }
+
+          .div_middle {
+              background: center url("./img/bg01.jpg") no-repeat;
+              background-size: cover;
+              height: 420px;
+          }
+
+          .Button_main {
+              max-width: 1180px;
+              margin: 0 auto;
+              position: fixed;
+          }
+
+          .Button_img:first-of-type {
+              width: 2.8rem;
+              max-width: 70px;
+              height: 2.8rem;
+              max-height: 70px;
+              background: center url("./image/ljiantou.png") no-repeat;
+              background-size: cover;
+              padding: 1px;
+              position: fixed;
+              top: 40%;
+              left: 100px;
+              cursor: pointer;
+          }
+
+          .Button_img:last-of-type {
+              width: 2.8rem;
+              max-width: 70px;
+
+              height: 2.8rem;
+              max-height: 70px;
+              background: center url("./image/rjiantou.png") no-repeat;
+              background-size: cover;
+              padding: 1px;
+              position: fixed;
+              top: 40%;
+              right: 100px;
+              cursor: pointer;
+          }
+
+          @keyframes mymove {
+              from {
+                  transform: scale(1, 1);
+              }
+
+              to {
+                  transform: scale(.7, .7);
+              }
+          }
+
+
+
+          /* @media screen and (max-width: 1440px) and (min-width: 1036px) {
+              body {
+                  transform: scale(.7) translateX(-50px);
+              }
+          }
+
+          @media screen and (max-width: 1035px) and (min-width: 851px) {
+              body {
+                  transform: scale(.6);
+              }
+          } */
+
+
+          /* @media screen and (max-width: 1180px) and (min-width: 1036px) {
+              .div_top {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+              }
+
+              .div_top_item {
+                  color: transparent;
+              }
+
+              .div_top_item:first-of-type {
+                  width: 10%;
+                  height: 60px;
+              }
+
+              .div_top_min {
+                  background: center url("./img/icont.png") no-repeat;
+                  background-size: cover;
+                  margin: 0 3.6%;
+              }
+
+              .div_top_item:nth-of-type(2) {
+                  width: 64px;
+                  background-position: -3px -1px;
+              }
+
+              .div_top_item:nth-of-type(3) {
+                  width: 64px;
+                  background-position: -71px -1px;
+              }
+
+              .div_top_item:nth-of-type(4) {
+                  width: 64px;
+                  background-position: -139px -1px;
+              }
+
+              .div_top_item:nth-of-type(5) {
+                  width: 64px;
+                  background-position: -415px -1px;
+              }
+
+              .div_top_item:nth-of-type(6) {
+                  width: 64px;
+                  background-position: -207px -1px;
+              }
+
+              .div_top_item:nth-of-type(7) {
+                  width: 64px;
+                  background-position: -272px -1px;
+              }
+          } */
+
+          /* @media screen and (max-width: 1035px) and (min-width: 851px) {
+              .div_top {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+              }
+
+              .div_top_item {
+                  color: transparent;
+                  width: 68px;
+              }
+
+              .div_top_item:first-of-type {
+                  width: 10%;
+                  height: 60px;
+              }
+
+              .div_top_min {
+                  background: center url("./img/icont.png") no-repeat;
+                  background-size: cover;
+                  margin: 0 3%;
+              }
+
+              .div_top_item:nth-of-type(2) {
+                  background-position: -3px -1px;
+              }
+
+              .div_top_item:nth-of-type(3) {
+                  background-position: -71px -1px;
+              }
+
+              .div_top_item:nth-of-type(4) {
+                  background-position: -139px -1px;
+              }
+
+              .div_top_item:nth-of-type(5) {
+                  background-position: -415px -1px;
+              }
+
+              .div_top_item:nth-of-type(6) {
+                  background-position: -207px -1px;
+              }
+
+              .div_top_item:nth-of-type(7) {
+                  background-position: -272px -1px;
+              }
+          } */
+
+          /* @media screen and (max-width: 850px) and (min-width: 677px) {
+              .div_top {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+              }
+
+              .div_top_item {
+                  color: transparent;
+                  width: 40px;
+                  height: 40px;
+              }
+
+              .div_top_min {
+                  margin: 0 3.2%;
+                  background: center url("./img/icont.png") no-repeat;
+                  background-size: cover;
+              }
+
+              .div_top_item:nth-of-type(2) {
+                  background-position: -3px -1px;
+              }
+
+              .div_top_item:nth-of-type(3) {
+                  background-position: -42px -1px;
+              }
+
+              .div_top_item:nth-of-type(4) {
+                  background-position: -83px -1px;
+              }
+
+              .div_top_item:nth-of-type(5) {
+                  background-position: -258px -1px;
+              }
+
+              .div_top_item:nth-of-type(6) {
+                  background-position: -129px -1px;
+              }
+
+              .div_top_item:nth-of-type(7) {
+                  background-position: -170px -1px;
+              }
+
+              .div_top_item:first-of-type {
+                  max-height: 60px;
+                  width: 80px;
+              }
+          } */
+
+          /* @media screen and (max-width: 676px) and (min-width: 420px) {
+              .div_top_min {
+                  animation: mymove .7s;
+                  transform: scale(.8, .8);
+              }
+
+              .div_top_item {
+                  width: 64px;
+                  height: 60px;
+                  line-height: 60px;
+              }
+
+              .div_top_item:first-of-type {
+                  height: 46px;
+              }
+          } */
+
+          /* @media screen and (max-width: 563px) and (min-width: 0px) {
+
+              .div_top_min {
+                  transform: scale(.8, .8);
+              }
+
+              .div_top_item {
+                  width: 64px;
+                  height: 60px;
+                  line-height: 60px;
+              }
+
+              .div_top_item:first-of-type {
+                  height: 44px;
+              }
+          } */
+      </style>
+
+  </head>
+
+  <body>
+      <div id="app">
+          <div class="div_main div_top_main">
+              <div class="div_top">
+                  <div v-for="(item,index) in list_data" class="div_top_item div_top_min" @click="gothePath(item.path)">
+                      {{item.name}}
+                  </div>
+              </div>
+          </div>
+          <div class="div_main div_middle">
+              <div class="Button_main">
+                  <div class="Button_img" @click="getDta('-')"></div>
+                  <div class="Button_img" @click="getDta('+')"></div>
+              </div>
+              <div class="div_top">
+
+
+              </div>
+          </div>
+
+
+
+      </div>
+      <script>
+          //   const singleton = function (name) {
+          //       this.name = name
+          //       this.instance = null
+          //   }
+          //   singleton.getInstance = function (name) {
+          //       if (!this.instance) {
+          //           // 如果为null则new出唯一实例
+          //           this.instance = new singleton(name)
+          //       }
+          //       return this.instance
+          //   }
+
+          //   var a = new singleton()
+          //   var b = new singleton()
+          //   console.log(a === b);
+
+
+          function throttle(fn, gapTime) {
+              if (gapTime == null || gapTime == undefined) {
+                  gapTime = 500
+              }
+
+              let _lastTime = null
+
+              // 返回新的函数
+              return function () {
+                  let _nowTime = +new Date()
+                  if (_nowTime - _lastTime > gapTime || !_lastTime) {
+                      fn.apply(this, arguments) //将this和参数传给原函数
+                      _lastTime = _nowTime
+                  }
+              }
+          }
+          var sty = document.getElementsByTagName('style')[0];
+          var domsWidth = document.documentElement.clientWidth
+          //   console.log(domsWidth);
+
+          var str = `@media screen and (max-width: ${domsWidth+20 }px) and (min-width: ${domsWidth-20 }px) {
+              #app {
+              transform: scale(${domsWidth /1536} );
+              margin-top: ${ -0.137 *(1536-domsWidth)}px;
+              }
+              }`
+          window.onload = function () {
+              console.log("窗口改变了");
+              sty.append(str)
+          }
+          var resizeTimer = null;
+          window.onreset = function () {
+              console.log(document.documentElement.clientWidth);
+
+          }
+          onresize = function () {
+              var ids = document.getElementById('app');
+              // // console.log(ids.getAttribute('transform'));
+              ids.setAttribute('style', "width:100vw")
+
+              console.log(ids);
+
+          }
+          //   window.addEventListener('resize', function () {
+          //       if (resizeTimer) clearTimeout(resizeTimer);
+          //       resizeTimer = setTimeout(function () {
+          //           domsWidth = document.documentElement.clientWidth;
+          //           var ids = document.getElementById('app');
+          //           //   console.log(ids.getAttribute('transform'));
+          //           ids.setAttribute('width', "100vh")
+          //           let transX = document.defaultView.getComputedStyle(ids, null).transform
+
+
+
+          //           str = ` @media screen and (max-width: ${domsWidth+20 }px) and (min-width: ${domsWidth-20 }px) {
+          //             #app {
+          //              animation:mymove .3s 1s;
+          //              transform: scale(${domsWidth /1536});
+          //              margin-top: ${ -0.137 *(1536-domsWidth)}px;
+          //             }
+          //            @keyframes mymove   { 
+          //             to { 
+          //                 transform: scale(${domsWidth /1536});
+          //                 margin-top: ${ -0.137 *(1536-domsWidth)}px;
+          //             }
+          //            }
+          //           }
+          //           `
+          //           domsWidth == screen.availWidth ? console.log('full') : sty.append(str);
+
+          //       }, 300);
+          //   });
+      </script>
+
+      <script type="text/javascript">
+          new Vue({
+              el: "#app",
+              data() {
+                  return {
+                      numB: 1,
+                      list: [12, 2, 2, 2],
+                      list_data: [{
+                          price: 10,
+                          num: 0,
+                          path: "index",
+
+                          name: ""
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "news",
+                          name: "新闻资讯"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "project",
+                          name: "产品中心"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "server",
+                          name: "技术服务"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "uses",
+                          name: "行业应用"
+                      }, {
+                          price: 13,
+                          num: 0,
+                          path: "scucess",
+                          name: "成功案例"
+                      }, {
+                          price: 6,
+                          num: 0,
+                          path: "tell",
+                          name: "联系我们"
+                      }],
+                      bgColor: [
+                          'linear-gradient(to right, rgba(92, 131, 169, 0.63), rgba(129, 170, 211, 0.74))',
+                          'linear-gradient(to right, rgb(112, 131, 149), rgba(113, 140, 167, 0.74))',
+                          'linear-gradient(to right, rgb(195, 233, 216), rgb(93, 143, 113))',
+                      ]
+
+                  }
+              },
+              computed: {
+
+              },
+              created() {
+                  //  this.getDta()
+
+              },
+              methods: {
+                  gothePath(reCeve) {
+                      window.location.href = window.location.origin + window.location.pathname + '#' + reCeve;
+                  },
+                  getDta(comt) {
+                      var DomSty = document.getElementsByClassName('div_middle')[0]
+                      var bgSty = document.getElementsByClassName('div_top_main')[0]
+                      if (comt === "+") {
+                          if (this.numB === 3) {
+                              this.numB = 0
+                          }
+                          this.numB++
+                          DomSty.style.backgroundImage = "url(./img/bg0" + this.numB + ".jpg)";
+                          bgSty.style.backgroundImage = this.bgColor[this.numB - 1]
+                      } else {
+                          if (this.numB === 1) {
+                              this.numB = 4
+                          }
+                          this.numB--
+                          DomSty.style.backgroundImage = "url(./img/bg0" + this.numB + ".jpg)";
+                          bgSty.style.backgroundImage = this.bgColor[this.numB - 1]
+                      }
+
+                  }
+
+              },
+          })
+      </script>
+  </body>
+
+  </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    ddddddddddddd
+
+  </div>
+  <input type="text" name="" id="mouseover" onkeyup="resetNum()">
+</body>
+<script>
+  var num = {
+    value: ''
+  }
+  var oproxy = new Proxy(num, {
+    get: function () {
+      return document.getElementById('mouseover').value
+    }
+  });
+
+
+  function resetNum() {
+    oproxy.value = document.getElementById('mouseover').value
+    document.getElementById('app').innerHTML = oproxy.value
+  }
+</script>
+
+</html>

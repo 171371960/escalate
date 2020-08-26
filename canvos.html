@@ -1,0 +1,62 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>自适应</title>
+      <script src="./data/vue2.6.js"></script>
+      <link rel="stylesheet" href="./img/index.sass">
+      <style>
+          * {
+              padding: 0;
+              margin: 0;
+          }
+      </style>
+
+  </head>
+
+  <body>
+      <canvas id="canvas"></canvas>
+      <script>
+          (function () {
+              canvas = document.getElementById("canvas");
+              c = canvas.getContext("2d");
+              canvas.width = document.documentElement.clientWidth; //canvasの領域を画面サイズに
+              canvas.height = document.documentElement.clientHeight;
+              cw = canvas.width;
+              ch = canvas.height;
+              var g = c.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+              g.addColorStop(0, '#004E2D');
+              g.addColorStop(1, '#11233D');
+              //g.addColorStop(2, '#064739');
+              c.fillStyle = g;
+              c.fillRect(0, 0, cw, ch);
+              loopNum = Math.floor(cw * ch / 1200);
+              for (var i = 0; i < loopNum; i++) {
+                  r = Math.floor(Math.random() * 64);
+                  g = r + 128 + Math.floor(Math.random() * 64);
+                  b = Math.floor(Math.random() * 128) + 128;
+                  c.globalCompositeOperation = "overlay";
+                  c.fillStyle = "rgb(" + r + "," +
+                      g + "," + b + ")";
+                  c.beginPath();
+                  x1 = Math.floor(Math.random() * cw);
+                  y1 = Math.floor(Math.random() * ch);
+                  c.moveTo(x1, y1);
+                  x2 = x1 - 150 + Math.floor(Math.random() * 250);
+                  y2 = y1 - 150 + Math.floor(Math.random() * 250);
+                  c.lineTo(x2, y2);
+                  x3 = x1 - 150 + Math.floor(Math.random() * 250);
+                  y3 = y1 - 150 + Math.floor(Math.random() * 250);
+                  c.lineTo(x3, y3);
+                  c.closePath();
+                  c.fill();
+              }
+          })();
+      </script>
+
+  </body>
+
+  </html>

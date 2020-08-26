@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="test.js"></script>
+    <title>Document</title>
+    <style>
+        .app {
+            width: 100px;
+            height: 100px;
+            background: rgb(26, 176, 193);
+        }
+
+        #heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            top: 1rem;
+        }
+
+        #heart:before,
+        #heart:after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: red;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        #heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+
+        /* 对话框 */
+        #talkbubble {
+            width: 120px;
+            height: 80px;
+            background: red;
+            position: relative;
+            top: 1rem;
+            left: 1rem;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        #talkbubble:before {
+            content: "";
+            position: absolute;
+            right: 100%;
+            top: 26px;
+            width: 0;
+            height: 0;
+            border-top: 13px solid transparent;
+            border-right: 26px solid red;
+            border-bottom: 13px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app"></div>
+
+    <div id="heart"></div>
+
+    <div id='talkbubble'></div>
+</body>
+<script>
+
+</script>
+
+</html>

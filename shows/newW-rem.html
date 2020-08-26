@@ -1,0 +1,206 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>自适应</title>
+      <script src="./data/vue2.6.js"></script>
+      <link rel="stylesheet" href="./img/index.sass">
+      <style>
+          * {
+              padding: 0;
+              margin: 0;
+          }
+
+          html,
+          body {
+              height: 100%;
+          }
+
+          #app {
+              width: 100%;
+              height: 100%;
+              margin: 0;
+              padding: 0;
+              background-color: lightblue;
+          }
+
+          .box {
+              width: 10rem;
+              min-width: 150px;
+              height: 10rem;
+              min-height: 150px;
+              background-color: blueviolet;
+          }
+
+          .show {
+              width: 10vw;
+              height: 10vw;
+              background-color: burlywood;
+
+          }
+
+          .showdow {
+              position: fixed;
+              right: 50px;
+              bottom: 50px;
+              display: block;
+              visibility: hidden;
+              width: 26px;
+              height: 3pc;
+              background:
+                  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAB8CAYAAAB356CJAAAACXBIW…b67feJQClL1xpsqMH5LClomg1NSxpKWbpW736v0v6vAQCo4CbBrd8RBQAAAABJRU5ErkJggg==) no-repeat 50% 0;
+              cursor: pointer;
+              -webkit-transition: all 0s;
+              transition: all 0s;
+          }
+      </style>
+
+  </head>
+
+  <body>
+      <div id="app">
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="box"> </div>
+          <div class="show"></div>
+          <div class="showdow">
+
+          </div>
+
+
+      </div>
+      <script>
+          function reSizeShow() {
+              var sty = document.getElementsByTagName('style')[0];
+              var domsWidth = document.documentElement.clientWidth;
+              console.log(domsWidth);
+              console.log(navigator.userAgent);
+
+              var str = `@media screen and (max-width: ${domsWidth+12 }px) and (min-width: ${domsWidth-12 }px) {
+             html{
+             font-size: ${domsWidth<1535? Math.round(domsWidth /window.screen.availWidth*1000)/160 :16}px;
+             
+             }
+             }`;
+              sty.append(str);
+          }
+          reSizeShow()
+          //   window.onresize = function () {
+          //       reSizeShow()
+          //   }
+          window.addEventListener('resize', function () {
+              reSizeShow()
+
+
+          })
+      </script>
+
+      <script type="text/javascript">
+          new Vue({
+              el: "#app",
+              data() {
+                  return {
+                      numB: 1,
+                      list: [12, 2, 2, 2],
+                      list_data: [{
+                          price: 10,
+                          num: 0,
+                          path: "index",
+
+                          name: ""
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "news",
+                          name: "新闻资讯"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "project",
+                          name: "产品中心"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "server",
+                          name: "技术服务"
+                      }, {
+                          price: 10,
+                          num: 0,
+                          path: "uses",
+                          name: "行业应用"
+                      }, {
+                          price: 13,
+                          num: 0,
+                          path: "scucess",
+                          name: "成功案例"
+                      }, {
+                          price: 6,
+                          num: 0,
+                          path: "tell",
+                          name: "联系我们"
+                      }],
+                      bgColor: [
+                          'linear-gradient(to right, rgba(92, 131, 169, 0.63), rgba(129, 170, 211, 0.74))',
+                          'linear-gradient(to right, rgb(112, 131, 149), rgba(113, 140, 167, 0.74))',
+                          'linear-gradient(to right, rgb(195, 233, 216), rgb(93, 143, 113))',
+                      ]
+
+                  }
+              },
+              computed: {
+
+              },
+              created() {
+                  //  this.getDta()
+
+              },
+              methods: {
+                  gothePath(reCeve) {
+                      window.location.href = window.location.origin + window.location.pathname + '#' + reCeve;
+                  },
+                  getDta(comt) {
+
+
+                  }
+
+              },
+          })
+      </script>
+  </body>
+
+  </html>

@@ -1,0 +1,111 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>button Show</title>
+      <script src="./data/vue2.6.js"></script>
+      <link rel="stylesheet" href="./img/index.sass">
+      <style>
+          * {
+              padding: 0;
+              margin: 0;
+          }
+
+          .button {
+              width: 200px;
+              height: 60px;
+              position: absolute;
+              content: '';
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background-color: #ff0081;
+              box-shadow: 10px 10px #ff0081, 15px 0px 0 2px #ff0081, 20px 15px 0 3px #ff0081;
+              background-image: radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0);
+              background-size: 10% 10%, 20% 20%, 15% 15%;
+              background-position: 18% 40%, 20% 31%, 30% 30%;
+          }
+
+          .button::before {
+              position: absolute;
+              content: '';
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background-color: #ff0081;
+              box-shadow: 10px 10px #ff0081, 15px 0px 0 2px #ff0081, 20px 15px 0 3px #ff0081;
+              /*无限叠加*/
+          }
+
+          .button::before {
+              position: absolute;
+              content: '';
+              left: -2em;
+              right: -2em;
+              top: -2em;
+              bottom: -2em;
+              pointer-events: none;
+              background-repeat: no-repeat;
+              background-image: radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0),
+                  radial-gradient(circle, #ff0081 20%, transparent 0);
+              background-size: 10% 10%, 20% 20%, 15% 15%;
+              background-position: 18% 40%, 20% 31%, 30% 30%;
+          }
+
+          .button::before {
+              transition: .75s background-position ease-in-out, 75s background-size ease-in-out;
+          }
+
+          .button:hover::before {
+              background-position: 5% 44%, -5% 20%, 7% 5%;
+              background-size: 0% 0%;
+          }
+
+          .button::before {
+              /*...*/
+              animation: bubbles ease-in-out .75s forwards;
+          }
+
+          .button:active::before {
+              animation: none;
+              /*这里注意取消动画*/
+              background-size: 0;
+          }
+
+          @keyframes bubbles {
+              0% {
+                  background-position: 18% 40%;
+              }
+
+              50% {
+                  background-position: 10% 44%;
+              }
+
+              100% {
+                  background-position: 5% 44%;
+                  background-size: 0% 0%;
+              }
+          }
+      </style>
+
+  </head>
+
+  <body>
+      <button class="button">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+      </button>
+  </body>
+
+  </html>

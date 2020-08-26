@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="data/vue2.6.js"></script>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .clearfix:after {
+      content: " ";
+      display: block;
+      clear: both;
+    }
+
+    .box {
+      position: relative;
+
+      width: 100%;
+      height: 150px;
+      margin: 0 auto;
+    }
+
+    .main {
+      width: 560px;
+      height: 150px;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      margin-left: -350px;
+      overflow: hidden;
+    }
+
+    .item {
+      list-style: none;
+      width: 280px;
+      height: 96px;
+      position: absolute;
+      left: 0px;
+      top: 27px;
+      transition: all 0.3s ease;
+    }
+
+    .p0 {
+      transform: translate3d(-280px, 0, 12px) scale(1);
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .p1 {
+      transform: translate3d(0px, 0, 0) scale(1);
+      opacity: 0.8;
+      z-index: 2;
+    }
+
+    .p2 {
+      transform: translate3d(280px, 0, 12px) scale(1);
+      opacity: 0.8;
+      z-index: 3;
+    }
+
+    .p3 {
+      transform: translate3d(140px, 0, 600px) scale(1.5);
+      opacity: 1;
+      z-index: 4;
+    }
+
+    .p4 {
+      transform: translate3d(560px, 0, 0) scale(1);
+      opacity: 0.1;
+      z-index: 3;
+    }
+
+    .newItem {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    .changeItem {
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      margin-left: -202px;
+      transform: scale(1.4);
+    }
+
+    .item img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .btnMain {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .left {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      margin-top: -15px;
+      z-index: 10;
+    }
+
+    .right {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      margin-top: -15px;
+      z-index: 10;
+    }
+
+    .left img,
+    .right img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .pressMain {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      width: 134px;
+      height: 24px;
+      margin-left: -67px;
+      z-index: 20;
+    }
+
+    .pressMain span {
+      display: inline-block;
+      margin: 2px 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: #fff;
+      background: pink;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .pressMain .active {
+      background: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="box">
+
+    </div>
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        list: [1, 3, 5, 3, 18, 13, 5, 11, 22, 31, 11, 5, 1, 33]
+
+      }
+    },
+    mounted: function () {
+      console.log(this.list);
+
+      var newF = this.setArr(this.list)
+
+      // console.log(new Set(...newF));
+      console.log(...newF);
+
+
+      // console.log(Array.from(new Set(newF)));
+
+
+    },
+    methods: {
+      setArr(arr) {
+        var obj = {}
+        var newArr = []
+        for (let index = 0; index < arr.length; index++) {
+          if (obj[arr[index]] === undefined) {
+            obj[arr[index]] = 1
+            newArr.push(arr[index])
+          }
+        }
+        return newArr;
+
+      }
+    },
+  })
+</script>
+
+</html>

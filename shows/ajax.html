@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .button {
+            width: 100px;
+            height: 40px;
+            background: rgb(26, 176, 193);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button"></div>
+</body>
+<script>
+    var a1 = document.getElementsByClassName('button')[0]
+    // console.log(a1);
+
+    a1.addEventListener('click', function () {
+        var xhr = new XMLHttpRequest(); // 创建XMLHttpRequest实例
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) { // 判断请求响应过程阶段，4 阶段代表已接收到数据
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) { // 校验HTTP状态码
+                    console.log(xhr, 123445566889);
+
+                    // console.log(xhr.response); // 输出响应的文本
+                    eval('var getdata =' + xhr.response)
+                    console.log(JSON.parse(JSON.stringify(getdata)));
+
+                } else {
+                    console.error(xhr.status, xhr.statusText); // 打印其他HTTP状态码
+                }
+            }
+        };
+
+        xhr.open('get', 'test.txt'); // 初始化xhr实例，或者说启动请求
+        xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+        xhr.send(null); // 设置HTTP请求携带参数，null为不带参数
+    })
+
+
+
+
+    var request = window.indexedDB.open('first', 1.0);
+    var db;
+    var dbs;
+
+
+    request.onupgradeneeded = function (event) {
+        dbs = event.target.result;
+        var objectStore;
+        if (!dbs.objectStoreNames.contains('person')) {
+            objectStore = dbs.createObjectStore('person', {
+                keyPath: 'id',
+                autoIncrement: true
+            });
+            objectStore.createIndex('name', 'name', {
+                unique: false
+            });
+            objectStore.createIndex('email', 'email', {
+                unique: true
+            });
+        }
+        console.log('打开后存入数据');
+
+
+
+    }
+    request.onsuccess = function (event) {
+        var dbs = request.result;
+        console.log('数据库打开成功');
+
+        function add() {
+            var request1 = dbs.transaction(['person'], 'readwrite')
+                .objectStore('person')
+                .add({
+                    id: 1,
+                    name: '张三',
+                    age: 24,
+                    email: 'zhangsan@example.com'
+                });
+
+            request1.onsuccess = function (event) {
+                console.log('数据写入成功');
+            };
+
+            request1.onerror = function (event) {
+                console.log('数据写入失败');
+            }
+        }
+
+        add();
+
+    };
+
+    request.onerror = function (event) {
+        console.log('数据库打开报错');
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+    // var responseHandler; // 定义一个全局作用域的函数
+    // function getJSONP(url, cb) {
+    //     if (url.indexOf('?') === -1) {
+    //         url += '?callback=responseHandler';
+    //     } else {
+    //         url += '&callback=responseHandler';
+    //     }
+    //     // 创建script 标签
+    //     var script = document.createElement('script');
+    //     // 在函数内部实现包裹函数，因为要用到cb
+    //     responseHandler = function (json) {
+    //         try {
+    //             cb(json)
+    //         } finally {
+    //             // 函数调用之后不管发生什么都要移除对应的标签，留着也没用
+    //             script.parentNode.removeChild(script);
+    //         }
+    //     }
+    //     script.setAttribute('src', url)
+    //     document.body.appendChild(script);
+
+    // }
+
+
+    // getJSONP('https://api.douban.com/v2/movie/coming_soon?q=' + 'dddddd', (val) => {
+
+
+    //     console.log(val)
+    // })
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>第5-1个项目</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>vuex</h3>
+  <hr />
+  <div id="app">
+    <div style="width: 150px;height:150px ;background-color:#FFB6C1 ">
+      {{meg}}
+      <div style="width: 112px;height: 112px;" v-color="'#ff4200'"></div>
+    </div>
+
+  </div>
+  <template id="tem1">
+    <div>
+      {{set}}
+    </div>
+  </template>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.9/vue.js"></script>
+<script src="https://cdn.bootcss.com/vuex/3.1.1/vuex.js"></script>
+<script src="http://mockjs.com/dist/mock.js"></script>
+<script>
+  Vue.use(Vuex)
+  const state = {
+    Num: 44
+    //要设置的初始属性值
+  };
+  Vue.directive('color', {
+    bind: function (el) { //钩子函数的第一个参数都是被绑定的DOM元素
+      el.style.backgroundColor = 'red'
+    }
+  })
+  const store = new Vuex.Store({
+    state
+  });
+  new Vue({
+    el: "#app",
+
+    data: {
+      meg: '11',
+      set: 'xx'
+    },
+    store,
+    // directives: {
+    //   'color': { //指令名要加上引号
+    //     bind: function (el, binding) {
+    //       console.log(binding);
+
+    //       el.style.backgroundColor = binding.value
+    //     }
+    //   }
+    // },
+    created() {
+
+    },
+    mounted() {
+      console.log(this.$store.state.Num);
+      console.log(this.creatGetMock());
+
+
+    },
+    methods: {
+      creatGetMock() {
+        const getMock = Mock.mock({
+          'list|1-10': [1]
+        })
+        return getMock
+      }
+    },
+  })
+</script>
+
+</html>

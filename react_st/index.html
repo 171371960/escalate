@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.js"></script>
+</head>
+
+<body>
+	<div id="box">
+	</div>
+	<script type="text/babel">
+		var alist=["js",'jq','css','h5'];
+	   var blist=["vue",'react','angular'];
+	   var clist=["prototype","class","array"];
+	   var hlist=[true,0,null,undefined];
+	//    function List(arr){
+    //       return <ul>
+	// 			{
+	// 			     arr.map((item,index)=>{
+	// 			        return <li key={index} style={{color:index===0?'red':''}}>{item}</li>
+	// 			     })
+	// 			}
+	// 		</ul>
+	//    }
+	class List extends React.Component {
+		
+		render () {
+			return <ul>
+				
+				{
+				this.props.data.map(( item,index )=>{
+				return <li key={index}> {item}</li>
+				})
+				}
+				</ul>
+		}
+	}
+	   ReactDOM.render(<div>
+				 
+			<List data={hlist} />
+	   </div>,
+	   document.getElementById("box"));
+	</script>
+</body>
+
+</html>

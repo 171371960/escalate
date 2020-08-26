@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .data1 {
+        display: inline-block;
+        width: 400px;
+        height: 1080px;
+        background: #000;
+    }
+
+    .data2 {
+        display: inline-block;
+        width: 400px;
+        height: 1080px;
+        background: #ff0;
+    }
+
+    .data3 {
+        display: inline-block;
+        width: 400px;
+        height: 1080px;
+        background: #324;
+    }
+
+    .data4 {
+        display: inline-block;
+        width: 400px;
+        height: 1080px;
+        background: #043;
+    }
+
+    .data5 {
+        display: inline-block;
+        width: 400px;
+        height: 1080px;
+        background: #920;
+    }
+
+    .data6 {
+        display: inline-block;
+        width: 800px;
+        height: 1080px;
+        background: #701;
+    }
+
+    body {
+        display: flex;
+        flex: 1980;
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<body>
+    <div class="data1"></div>
+    <div class="data2"></div>
+    <div class="data3"></div>
+    <div class="data4"></div>
+    <div class="data4"></div>
+    <div class="data5"></div>
+    <div class="data6"></div>
+</body>
+<script>
+    // console.log($);
+    // var ratio = $(window).height() / 1080;
+
+    let menuIds = []; // 全局变量
+    var getInner = {}
+    /**
+     * 递归获取选中菜单的id
+     * @type {Array}
+     */
+    function getTreeId(node) {
+        if (node.length > 0) {
+            for (let i = 0; i < node.length; i++) {
+                getInner = node[i];
+                getInner["children"] = i === 0 ? null : node[i - 1];
+                getInner["parent"] = i == node.length - 1 ? null : node[i].pId;
+                if (node[i].children) {
+                    getTreeId(node[i].children);
+                }
+            }
+            return getInner;
+        }
+    }
+    var datas = [{
+        "id": 1,
+        "pId": 0,
+        "name": "父节点一"
+    }, {
+        "id": 2,
+        "pId": 1,
+        "name": "子节点二"
+    }, {
+        "id": 11,
+        "pId": 2,
+        "name": "子节点三"
+    }, {
+        "id": 12,
+        "pId": 11,
+        "name": "子节点四"
+    }, {
+        "id": 13,
+        "pId": 12,
+        "name": "子节点五"
+    }, {
+        "id": 14,
+        "pId": 13,
+        "name": "子节点六"
+    }]
+
+    datas = datas.reverse()
+    console.log(JSON.stringify(getTreeId(datas)));
+    console.log(getTreeId(datas));
+</script>
+
+</html>

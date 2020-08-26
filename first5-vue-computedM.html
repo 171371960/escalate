@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>价格计算</title>
+   <script src="./data/vue2.6.js"></script>
+   <style>
+     * {
+       padding: 0;
+       margin: 0;
+     }
+
+     .listSty {
+       width: 16em;
+       text-align: center;
+       margin: 12pt auto;
+
+     }
+
+     .listSty span {
+       display: inline-block;
+       width: 40px;
+       font-weight: bolder;
+     }
+   </style>
+ </head>
+
+ <body>
+   <div id="app">
+     <div v-for="(item, index) in list" :key="index" class="listSty"> 价格:{{item.price}}元 数量：{{item.number}}
+       <span @click="getData($event,index)">-</span>
+       <span @click="getData($event,index)">+</span>
+     </div>
+     <div class="listSty"> {{thatAllPrice}}</div>
+   </div>
+
+   <script type="text/javascript">
+     new Vue({
+       el: "#app",
+       data() {
+         return {
+           list: [{
+               price: 6,
+               number: 0,
+               name: "茄子"
+             },
+             {
+               price: 6,
+               number: 0,
+               name: "南瓜"
+             },
+             {
+               price: 3,
+               number: 0,
+               name: "西红柿"
+             },
+             {
+               price: 4,
+               number: 0,
+               name: "豆角"
+             },
+           ]
+         }
+
+       },
+       computed: {
+         thatAllPrice() {
+           var price = 0
+           this.list.forEach(item => {
+             price += item.price * item.number
+           })
+           return price
+         }
+       },
+       created() {
+         //  this.getDta()
+       },
+       methods: {
+         getData(event, getIndex) {
+           var eventNode = event.target.innerText;
+
+           if (this.list[getIndex].number === 0 && eventNode == '-') {
+             return false
+           } else {
+             eventNode == '-' ? this.list[getIndex].number-- : this.list[getIndex].number++;
+           }
+         },
+
+       },
+     })
+   </script>
+ </body>
+
+ </html>
