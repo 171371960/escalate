@@ -33,7 +33,7 @@
     }
 
     .div_top_item {
-      
+      width: 14%;
       height: 64px;
       text-align: center;
       display: inline-flex;
@@ -358,8 +358,8 @@
     }
     var sty = document.getElementsByTagName("style")[0];
     var domsWidth = document.documentElement.clientWidth;
-    if (domsWidth < 750) {
-      domsWidth = 750
+    if (domsWidth < 690) {
+      domsWidth = 690
     }
     console.log(domsWidth);
     var str = `@media screen and (max-width: ${
